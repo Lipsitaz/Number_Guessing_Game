@@ -1,0 +1,45 @@
+import java.util.*;
+import javax.swing.*;
+
+public class NumberGuessingGame {
+	
+	public static void Guess_the_number(int n) {
+		Scanner sc = new Scanner (System.in);
+		JOptionPane.showMessageDialog(null, "There are 5 instances to guess. "
+				+ "\nGuess correctly!!!\n"
+				+ "Choose a number between 1-100: ");
+		int k = 5, i;
+		for (i = 0; i < 5; i++) { //5 instances to guess
+			System.out.print("Guess The Number: ");
+			int num = sc.nextInt();
+			
+			if (num <= 0 || num > 100) {
+				JOptionPane.showMessageDialog(null, "Choose A Valid Number..");
+				break;
+			}
+			
+			if (num < n) {
+				JOptionPane.showMessageDialog(null, "Your Number is Less Than Mine.");
+			}else if (num > n) {
+				JOptionPane.showMessageDialog(null, "Your Number is Greater Than Mine.");
+			}else {
+				JOptionPane.showMessageDialog(null, "You Guessed The Right Number.");
+				break;
+			}
+		}
+		if (i == k) {
+			JOptionPane.showMessageDialog(null, "You Have Exhausted 5 Trials.");
+		}
+		System.out.println("The Number was: "+n);
+		JOptionPane.showMessageDialog(null, "Thanks For Playing!!!");
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Random randomnum = new Random();
+		int n = randomnum.nextInt(100);
+		Guess_the_number(n);
+
+	}
+
+}
